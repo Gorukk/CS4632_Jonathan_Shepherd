@@ -17,4 +17,13 @@ public class Recovered
 		recPop = 0;
 		this.recRate = recRate;
 	}
+
+	public int Recovery(int infPop)
+	{
+		int deltaPop = recRate * infPop;
+
+		recPop += deltaPop;
+
+		return deltaPop;
+	}
 }
