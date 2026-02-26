@@ -16,4 +16,13 @@ public class Susceptible
 		this.susPop = 10000;
 		this.returnRate = .10f;
 	}
+
+	public int Return(int recPop)
+	{
+		int deltaPop = returnRate * recPop;
+
+		susPop += deltaPop;
+
+		return deltaPop;
+	}
 }
