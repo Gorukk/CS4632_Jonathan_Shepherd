@@ -2,8 +2,8 @@
 
 public class Dead
 {
-	int deadPop;
-	float deathrate;
+	int deadPop; //Amount of people that died from the disease
+	float deathrate; //Rate of infected individuals dying
 
 	public Dead()
 	{

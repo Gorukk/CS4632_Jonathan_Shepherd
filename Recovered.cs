@@ -2,8 +2,8 @@
 
 public class Recovered
 {
-	int recPop;
-	float recRate;
+	int recPop; //Recovered Population
+	float recRate; //Rate of Infected recovering from the disease
 
 
 	public Recovered()

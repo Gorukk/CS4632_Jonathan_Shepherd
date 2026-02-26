@@ -2,8 +2,8 @@
 
 public class Infected
 {
-	int infPop;
-	float infRate;
+	int infPop; //Infected Population
+	float infRate; //Rate of susceptible individuals being infected
 
 	public Infected()
 	{

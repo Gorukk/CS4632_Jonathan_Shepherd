@@ -2,7 +2,7 @@
 
 public class Susceptible
 {
-	int susPop;
+	int susPop; //Susceptible Population
 	float returnRate; //Rate of recovered individuals returning to normal population
 
 	public Susceptible(int susPop, float returnRate)
