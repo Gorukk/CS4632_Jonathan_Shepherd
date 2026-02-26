@@ -3,7 +3,8 @@
 public class Recovered
 {
 	int recPop;
-	int recRate;
+	float recRate;
+
 
 	public Recovered()
 	{
