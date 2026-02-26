@@ -19,7 +19,7 @@ public class Susceptible
 
 	public int Return(int recPop)
 	{
-		int deltaPop = returnRate * recPop;
+		int deltaPop = (int)returnRate * recPop;
 
 		return deltaPop;
 	}
