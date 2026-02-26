@@ -16,4 +16,13 @@ public class Infected
 		this.infPop = infPop;
 		this.infRate = infRate;
 	}
+
+	public int Infection(int susPop, int recPop)
+	{
+		int deltaPop = infRate * ((susPop * infPop) / (susPop + recPop + infPop));
+
+		infPop += deltaPop;
+
+		return infPop;
+	}
 }
