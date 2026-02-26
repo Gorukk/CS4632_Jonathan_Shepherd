@@ -21,8 +21,6 @@ public class Susceptible
 	{
 		int deltaPop = returnRate * recPop;
 
-		susPop += deltaPop;
-
 		return deltaPop;
 	}
 }

@@ -21,8 +21,6 @@ public class Dead
 	{
 		int deltaPop = deathRate * infPop;
 
-		deadPop += deltaPop;
-
 		return deadPop;
 	}
 }

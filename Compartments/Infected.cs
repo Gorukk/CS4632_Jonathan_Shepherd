@@ -21,8 +21,6 @@ public class Infected
 	{
 		int deltaPop = infRate * ((susPop * infPop) / (susPop + recPop + infPop));
 
-		infPop += deltaPop;
-
 		return infPop;
 	}
 }

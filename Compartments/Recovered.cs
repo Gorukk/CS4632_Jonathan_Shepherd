@@ -22,8 +22,6 @@ public class Recovered
 	{
 		int deltaPop = recRate * infPop;
 
-		recPop += deltaPop;
-
 		return deltaPop;
 	}
 }
