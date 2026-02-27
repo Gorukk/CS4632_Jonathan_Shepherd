@@ -11,4 +11,7 @@ C# will be the programming language used for this project. It will be coded usin
 Currently implemented is the basic compartment model and the equations for it. A basic command line menu is used to enter calues as well as to output values. A better command line menu will be implemented next. After that a seperate probability model wil also be available in the future
 
 -Usage
-To run 
+To run launch the CSProj from the file. You'll be asked to enter values in the command line and will recieve the output.
+
+-Architecture Overview
+The four main compartments are classes; Susceptible, Infected, Dead, and Recovered. These map cleanly to the UML as the four boxes shown. The transitions between each box on the UML are modeled as equations, determining population movement and changes. The architecture has stayed pretty consistent, with one minor change. A transfer from Recovered to Suscepible, modeling the de-immunization of the recovered, has been added. This is to also help model deadly plagues, such as the Black Death, that have low rates of de-immunization. 
