@@ -79,13 +79,17 @@ do
     int deltaReturn = susPop.Return(recPop.getRecPop());
     //Console.WriteLine(deltaReturn);
 
+    susPop.setSusPop(susPop.getSusPop() - deltaInfection + deltaReturn);
+    Console.WriteLine(susPop.getSusPop());
+
     infPop.setInfPop(infPop.getInfPop() + deltaInfection - deltaDeath - deltaRecovery);
+    Console.WriteLine(infPop.getInfPop());
 
     deadPop.setDeadPop(deltaDeath + deadPop.getDeadPop());
+    Console.WriteLine(deadPop.getDeadPop());
 
     recPop.setRecPop(recPop.getRecPop() + deltaRecovery - deltaReturn);
-
-    susPop.setSusPop(susPop.getSusPop() - deltaInfection + deltaReturn);
+    Console.WriteLine(recPop.getRecPop());
 
     iterations++;
 }while((infPop.getInfPop() > 0) && (iterations < 10000));
