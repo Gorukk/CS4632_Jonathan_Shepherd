@@ -20,8 +20,35 @@ public class Recovered
 
 	public int Recovery(int infPop)
 	{
-		int deltaPop = recRate * infPop;
+		int deltaPop = (int)(recRate * infPop);
 
 		return deltaPop;
 	}
+
+    public void setRecPop(int recPop)
+    {
+		if(recPop > 0)
+		{
+            this.recPop = recPop;
+		}
+		else
+		{
+			this.recPop = 0;
+		}
+    }
+
+    public int getRecPop()
+    {
+        return recPop;
+    }
+
+    public void setRecRate(float recRate)
+    {
+        this.recRate = recRate;
+    }
+
+    public float getRecRate()
+    {
+        return recRate;
+    }
 }

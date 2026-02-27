@@ -19,8 +19,35 @@ public class Susceptible
 
 	public int Return(int recPop)
 	{
-		int deltaPop = (int)returnRate * recPop;
+		int deltaPop = (int)(returnRate * recPop);
 
 		return deltaPop;
 	}
+
+    public void setSusPop(int susPop)
+    {
+        if(susPop > 0)
+		{
+            this.susPop = susPop;
+        }
+        else
+        {
+            this.susPop = 0;
+        }
+    }
+
+    public int getSusPop()
+    {
+        return susPop;
+    }
+
+    public void setReturnRate(float returnRate)
+    {
+        this.returnRate = returnRate;
+    }
+
+    public float getRecRate()
+    {
+        return returnRate;
+    }
 }

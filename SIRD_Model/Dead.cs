@@ -19,8 +19,34 @@ public class Dead
 
 	public int Death(int infPop)
 	{
-		int deltaPop = deathRate * infPop;
+		int deltaPop = (int)(deathRate * infPop);
 
 		return deadPop;
 	}
+
+	public void setDeadPop(int deadPop) {
+		if (deadPop > 0) 
+		{
+            this.deadPop = deadPop;
+		}
+		else
+		{
+			this.deadPop = 0;
+		}
+	}
+
+	public int getDeadPop()
+	{
+		return deadPop;
+	}
+
+    public void setDeadRate(float deathRate)
+    {
+        this.deathRate = deathRate;
+    }
+
+    public float getDeadRate()
+    {
+        return deathRate;
+    }
 }
