@@ -50,4 +50,13 @@ public class Susceptible
     {
         return returnRate;
     }
+
+    public void deltaPop(int delta)
+    {
+        susPop += delta;
+        if (susPop < 0)
+        {
+            susPop = 0;
+        }
+    }
 }

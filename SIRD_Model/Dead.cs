@@ -11,7 +11,7 @@ public class Dead
 		deathRate = .25f;
 	}
 
-	public Dead(int deathRate)
+	public Dead(float deathRate)
 	{
 		deadPop = 0;
 		this.deathRate = deathRate;
@@ -19,9 +19,9 @@ public class Dead
 
 	public int Death(int infPop)
 	{
-		int deltaPop = (int)(deathRate * infPop);
+		int deltaPop = (int)((float)deathRate * (float)infPop);
 
-		return deadPop;
+		return deltaPop;
 	}
 
 	public void setDeadPop(int deadPop) {
@@ -48,5 +48,14 @@ public class Dead
     public float getDeadRate()
     {
         return deathRate;
+    }
+
+    public void deltaPop(int delta)
+    {
+        deadPop += delta;
+        if (deadPop < 0)
+        {
+            deadPop = 0;
+        }
     }
 }

@@ -12,7 +12,7 @@ public class Recovered
 		 recRate = .25f;
 	}
 
-	public Recovered(int recRate)
+	public Recovered(float recRate)
 	{
 		recPop = 0;
 		this.recRate = recRate;
@@ -50,5 +50,14 @@ public class Recovered
     public float getRecRate()
     {
         return recRate;
+    }
+
+    public void deltaPop(int delta)
+    {
+        recPop += delta;
+        if (recPop < 0)
+        {
+           recPop = 0;
+        }
     }
 }

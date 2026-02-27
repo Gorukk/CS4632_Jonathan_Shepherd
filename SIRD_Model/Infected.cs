@@ -19,9 +19,9 @@ public class Infected
 
 	public int Infection(int susPop, int recPop)
 	{
-		int deltaPop = (int)(infRate * ((susPop * infPop) / (susPop + recPop + infPop)));
+		int deltaPop = (int)(infRate * (float)((susPop * infPop) / (susPop + recPop + infPop)));
 
-		return infPop;
+		return deltaPop;
 	}
 
     public void setInfPop(int infPop)
@@ -49,5 +49,14 @@ public class Infected
     public float getInfRate()
     {
         return infRate;
+    }
+
+    public void deltaPop(int delta)
+    {
+        infPop += delta;
+        if (infPop < 0)
+        {
+            infPop = 0;
+        }
     }
 }
