@@ -94,20 +94,21 @@ static void SIRD_Model()
             deltaInfection = susPop.getSusPop();
         }
         //int deltaInfection = infPop.Infection(susPop.getSusPop(), recPop.getRecPop(), deadPop.getDeadPop());
-        Console.WriteLine(deltaInfection);
+        //Console.WriteLine(deltaInfection); //Used for debugging
 
         int deltaDeath = (int)((float)deadPop.getDeadRate() * (float)infPop.getInfPop());
         //int deltaDeath = deadPop.Death(infPop.getInfPop());
-        Console.WriteLine(deltaDeath);
+        //Console.WriteLine(deltaDeath); //Used for debugging
 
         int deltaRecovery = (int)(recPop.getRecRate() * infPop.getInfPop());
         //int deltaRecovery = recPop.Recovery(infPop.getInfPop());
-        Console.WriteLine(deltaRecovery);
+        //Console.WriteLine(deltaRecovery); //Used for debugging
 
         int deltaReturn = (int)(susPop.getReturnRate() * recPop.getRecPop());
         //int deltaReturn = susPop.Return(recPop.getRecPop());
-        Console.WriteLine(deltaReturn);
+        //Console.WriteLine(deltaReturn); //Used for debugging
 
+        /* Used for debugging
         Console.WriteLine("\nIteration: " + iterations);
         susPop.setSusPop(susPop.getSusPop() - deltaInfection + deltaReturn);
         Console.WriteLine("Susceptible Population: " + susPop.getSusPop());
@@ -120,7 +121,7 @@ static void SIRD_Model()
 
         recPop.setRecPop(recPop.getRecPop() + deltaRecovery - deltaReturn);
         Console.WriteLine("Recovered Population: " + recPop.getRecPop());
-
+        */
         iterations++;
     } while ((infPop.getInfPop() > 0) && (iterations < 10000));
     Console.WriteLine("\nSusceptible Population: " + susPop.getSusPop());
