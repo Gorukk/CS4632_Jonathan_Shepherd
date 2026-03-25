@@ -67,29 +67,38 @@ int iterations = 0;
 
 do
 {
-    int deltaInfection = infPop.Infection(susPop.getSusPop(), recPop.getRecPop(), deadPop.getDeadPop());
-    //Console.WriteLine(deltaInfection);
+    int deltaInfection = (int)(infPop.getInfRate() * (float)((susPop.getSusPop() * infPop.getInfPop()) / (susPop.getSusPop() + recPop.getRecPop() + infPop.getInfPop())));
+    if(deltaInfection > susPop.getSusPop())
+    {
+        deltaInfection = susPop.getSusPop();
+    }
+    //int deltaInfection = infPop.Infection(susPop.getSusPop(), recPop.getRecPop(), deadPop.getDeadPop());
+    Console.WriteLine(deltaInfection);
 
-    int deltaDeath = deadPop.Death(infPop.getInfPop());
-    //Console.WriteLine(deltaDeath);
+    int deltaDeath = (int)((float)deadPop.getDeadRate() * (float)infPop.getInfPop());
+    //int deltaDeath = deadPop.Death(infPop.getInfPop());
+    Console.WriteLine(deltaDeath);
 
-    int deltaRecovery = recPop.Recovery(infPop.getInfPop());
-    //Console.WriteLine(deltaRecovery);
+    int deltaRecovery = (int)(recPop.getRecRate() * infPop.getInfPop());
+    //int deltaRecovery = recPop.Recovery(infPop.getInfPop());
+    Console.WriteLine(deltaRecovery);
 
-    int deltaReturn = susPop.Return(recPop.getRecPop());
-    //Console.WriteLine(deltaReturn);
+    int deltaReturn = (int)(susPop.getReturnRate() * recPop.getRecPop());
+    //int deltaReturn = susPop.Return(recPop.getRecPop());
+    Console.WriteLine(deltaReturn);
 
+    Console.WriteLine("\nIteration: " + iterations);
     susPop.setSusPop(susPop.getSusPop() - deltaInfection + deltaReturn);
-    Console.WriteLine(susPop.getSusPop());
+    Console.WriteLine("Susceptible Population: " + susPop.getSusPop());
 
     infPop.setInfPop(infPop.getInfPop() + deltaInfection - deltaDeath - deltaRecovery);
-    Console.WriteLine(infPop.getInfPop());
+    Console.WriteLine("Infected Population: " + infPop.getInfPop());
 
     deadPop.setDeadPop(deltaDeath + deadPop.getDeadPop());
-    Console.WriteLine(deadPop.getDeadPop());
+    Console.WriteLine("Dead Population: " + deadPop.getDeadPop());
 
     recPop.setRecPop(recPop.getRecPop() + deltaRecovery - deltaReturn);
-    Console.WriteLine(recPop.getRecPop());
+    Console.WriteLine("Recovered Population: " + recPop.getRecPop());
 
     iterations++;
 }while((infPop.getInfPop() > 0) && (iterations < 10000));

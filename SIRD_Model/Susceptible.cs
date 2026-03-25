@@ -46,7 +46,7 @@ public class Susceptible
         this.returnRate = returnRate;
     }
 
-    public float getRecRate()
+    public float getReturnRate()
     {
         return returnRate;
     }
