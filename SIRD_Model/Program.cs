@@ -67,7 +67,7 @@ int iterations = 0;
 
 do
 {
-    int deltaInfection = infPop.Infection(susPop.getSusPop(), recPop.getRecPop());
+    int deltaInfection = infPop.Infection(susPop.getSusPop(), recPop.getRecPop(), deadPop.getDeadPop());
     //Console.WriteLine(deltaInfection);
 
     int deltaDeath = deadPop.Death(infPop.getInfPop());

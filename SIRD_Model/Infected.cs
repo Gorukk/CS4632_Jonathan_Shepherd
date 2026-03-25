@@ -17,10 +17,13 @@ public class Infected
 		this.infRate = infRate;
 	}
 
-	public int Infection(int susPop, int recPop)
+	public int Infection(int susPop, int recPop, int deadPop)
 	{
-		int deltaPop = (int)(infRate * (float)((susPop * infPop) / (susPop + recPop + infPop)));
-
+		int deltaPop = (int)(infRate * (float)((susPop * infPop) / (susPop + recPop + infPop + deadPop)));
+        if(deltaPop > susPop)
+        {
+            deltaPop = susPop;
+        }
 		return deltaPop;
 	}
 
