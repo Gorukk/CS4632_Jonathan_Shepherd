@@ -86,7 +86,7 @@ static void SIRD_Model()
     Dead deadPop = new Dead(rate);
 
     int iterations = 0;
-
+    int totalChange = 1;
     do
     {
         int deltaInfection = (int)(infPop.getInfRate() * (float)((susPop.getSusPop() * infPop.getInfPop()) / (susPop.getSusPop() + recPop.getRecPop() + infPop.getInfPop())));
@@ -95,19 +95,19 @@ static void SIRD_Model()
             deltaInfection = susPop.getSusPop();
         }
         //int deltaInfection = infPop.Infection(susPop.getSusPop(), recPop.getRecPop(), deadPop.getDeadPop());
-        Console.WriteLine(deltaInfection);
+        //Console.WriteLine(deltaInfection);
 
         int deltaDeath = (int)((float)deadPop.getDeadRate() * (float)infPop.getInfPop());
         //int deltaDeath = deadPop.Death(infPop.getInfPop());
-        Console.WriteLine(deltaDeath);
+        //Console.WriteLine(deltaDeath);
 
         int deltaRecovery = (int)(recPop.getRecRate() * infPop.getInfPop());
         //int deltaRecovery = recPop.Recovery(infPop.getInfPop());
-        Console.WriteLine(deltaRecovery);
+        //Console.WriteLine(deltaRecovery);
 
         int deltaReturn = (int)(susPop.getReturnRate() * recPop.getRecPop());
         //int deltaReturn = susPop.Return(recPop.getRecPop());
-        Console.WriteLine(deltaReturn);
+        //Console.WriteLine(deltaReturn);
 
         Console.WriteLine("\nIteration: " + iterations);
         susPop.setSusPop(susPop.getSusPop() - deltaInfection + deltaReturn);
@@ -122,8 +122,9 @@ static void SIRD_Model()
         recPop.setRecPop(recPop.getRecPop() + deltaRecovery - deltaReturn);
         Console.WriteLine("Recovered Population: " + recPop.getRecPop());
 
+        totalChange = deltaDeath + deltaInfection + +deltaRecovery + deltaReturn;
         iterations++;
-    } while ((infPop.getInfPop() > 0) && (iterations < 10000));
+    } while ((infPop.getInfPop() > 0) && (iterations < 10000) && (totalChange != 0));
     Console.WriteLine("\nSusceptible Population: " + susPop.getSusPop());
     Console.WriteLine("\nInfected Population: " + infPop.getInfPop());
     Console.WriteLine("\nDead Population: " + deadPop.getDeadPop());

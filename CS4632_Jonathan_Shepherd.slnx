@@ -1,4 +1,4 @@
 <Solution>
-  <Project Path="Simulation_Graph/Simulation_Graph.csproj" Id="9b6e9f5c-3c1f-4972-915c-535994dcf98a" />
+  <Project Path="Simulation Graph/Simulation Graph.csproj" Id="9d33a144-e96e-47a0-b7f2-152f4c503f11" />
   <Project Path="Virology_Simulation/Virology_Simulation.csproj" Id="f0cea1ce-0dac-4ff4-8181-39c95b399e24" />
 </Solution>
