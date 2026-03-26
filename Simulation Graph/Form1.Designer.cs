@@ -1,4 +1,7 @@
-﻿namespace Simulation_Graph
+﻿using System.Collections.Generic;
+using System.Windows.Forms.DataVisualization.Charting;
+
+namespace Simulation_Graph
 {
     partial class Form1
     {
@@ -63,6 +66,21 @@
         #endregion
 
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+
+        public void addSeries(List<int> values, string name)
+        {
+            int x = 0;
+            Series series = new Series(name)
+            {
+                ChartType = SeriesChartType.Line,
+                ChartArea = ""
+            };
+            foreach (int value in values)
+            {
+                series.Points.AddXY(x, value);
+            }
+            chart1.Series.Add(series);
+        }
     }
 }
 

@@ -145,9 +145,8 @@ static void SIRD_Model()
     Console.WriteLine("\nDead Population: " + deadPop.getDeadPop());
     Console.WriteLine("\nRecovered Population: " + recPop.getRecPop());
     Console.WriteLine("\nIterations: " + iterations);
-
     
-
+    Simulation_Graph.Form1 simGraph= new Simulation_Graph.Form1();
     Console.WriteLine("\nPress Enter to Exit");
     Console.ReadLine();
 }
