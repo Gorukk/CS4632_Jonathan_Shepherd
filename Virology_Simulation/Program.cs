@@ -14,6 +14,7 @@ do
             SIRD_Model();
             break;
         case 2:
+            Prob_Model();
             break;
         default:
             Console.WriteLine("Invalid Input.\nPlease enter the number corresponding to your selection.");
@@ -21,11 +22,20 @@ do
     }
 }while(input != 1 || input != 2);
 
+static void Prob_Model()
+{
+
+}
 static void SIRD_Model()
 {
     int pop;
 
     float rate;
+
+    List<int> susPopList = new List<int>();
+    List<int> infPopList = new List<int>();
+    List<int> deadPopList = new List<int>();
+    List<int> recPopList = new List<int>();
 
     Console.WriteLine("Enter the susceptible population:");
     pop = Convert.ToInt32(Console.ReadLine());
@@ -109,18 +119,23 @@ static void SIRD_Model()
         //int deltaReturn = susPop.Return(recPop.getRecPop());
         //Console.WriteLine(deltaReturn);
 
-        Console.WriteLine("\nIteration: " + iterations);
+        //Console.WriteLine("\nIteration: " + iterations);
         susPop.setSusPop(susPop.getSusPop() - deltaInfection + deltaReturn);
-        Console.WriteLine("Susceptible Population: " + susPop.getSusPop());
+        //Console.WriteLine("Susceptible Population: " + susPop.getSusPop());
 
         infPop.setInfPop(infPop.getInfPop() + deltaInfection - deltaDeath - deltaRecovery);
-        Console.WriteLine("Infected Population: " + infPop.getInfPop());
+        //Console.WriteLine("Infected Population: " + infPop.getInfPop());
 
         deadPop.setDeadPop(deltaDeath + deadPop.getDeadPop());
-        Console.WriteLine("Dead Population: " + deadPop.getDeadPop());
+        //Console.WriteLine("Dead Population: " + deadPop.getDeadPop());
 
         recPop.setRecPop(recPop.getRecPop() + deltaRecovery - deltaReturn);
-        Console.WriteLine("Recovered Population: " + recPop.getRecPop());
+        //Console.WriteLine("Recovered Population: " + recPop.getRecPop());
+
+        susPopList.Add(susPop.getSusPop());
+        infPopList.Add(infPop.getInfPop());
+        deadPopList.Add(deadPop.getDeadPop());
+        recPopList.Add(recPop.getRecPop());
 
         totalChange = deltaDeath + deltaInfection + +deltaRecovery + deltaReturn;
         iterations++;
@@ -130,6 +145,8 @@ static void SIRD_Model()
     Console.WriteLine("\nDead Population: " + deadPop.getDeadPop());
     Console.WriteLine("\nRecovered Population: " + recPop.getRecPop());
     Console.WriteLine("\nIterations: " + iterations);
+
+    
 
     Console.WriteLine("\nPress Enter to Exit");
     Console.ReadLine();
