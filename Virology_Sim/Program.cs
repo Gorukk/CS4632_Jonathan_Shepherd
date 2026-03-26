@@ -147,6 +147,7 @@ static void SIRD_Model()
     Console.WriteLine("\nIterations: " + iterations);
     
     Simulation_Graph.Form1 simGraph= new Simulation_Graph.Form1();
+
     Console.WriteLine("\nPress Enter to Exit");
     Console.ReadLine();
 }
