@@ -184,11 +184,12 @@ namespace Simulation_Graph
                 simGraph.addSeries(recList, "Recovery Population", Color.Green);
                 simGraph.addSeries(deadList, "Dead Population", Color.Black);
                 Application.Run(simGraph);
-
+                /*
                 Bitmap bmp = new Bitmap(simGraph.Width, simGraph.Height, PixelFormat.Format32bppArgb);
                 simGraph.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
                 runs++;
                 bmp.Save("ProbabilityRun" + runs, ImageFormat.Png);
+                */
             }
 
             void SIRD_Model()
@@ -320,11 +321,11 @@ namespace Simulation_Graph
                 simGraph.addSeries(recPopList, "Recovery Population", Color.Green);
                 simGraph.addSeries(deadPopList, "Dead Population", Color.Black);
                 Application.Run(simGraph);
-                runs++;
-                Bitmap bmp = new Bitmap(simGraph.Width, simGraph.Height, PixelFormat.Format32bppArgb);
-                simGraph.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
-                runs++;
-                bmp.Save("ProbabilityRun" + runs, ImageFormat.Png);
+                //runs++;
+                //Bitmap bmp = new Bitmap(simGraph.Width, simGraph.Height, PixelFormat.Format32bppArgb);
+                //simGraph.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                //runs++;
+                //bmp.Save("ProbabilityRun" + runs, ImageFormat.Png);
 
                 Console.WriteLine("\nPress Enter to Continue");
                 Console.ReadLine();
