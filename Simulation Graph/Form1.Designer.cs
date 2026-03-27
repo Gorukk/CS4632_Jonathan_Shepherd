@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Simulation_Graph
@@ -67,13 +69,16 @@ namespace Simulation_Graph
 
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
 
-        public void addSeries(List<int> values, string name)
+        public void addSeries(List<int> values, string name, Color color)
         {
             int x = 0;
             Series series = new Series(name)
             {
                 ChartType = SeriesChartType.Line,
-                ChartArea = ""
+                ChartArea = "",
+                MarkerColor = color,
+                Color = color,
+                MarkerSize = 10
             };
             foreach (int value in values)
             {

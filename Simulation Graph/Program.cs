@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,7 +19,7 @@ namespace Simulation_Graph
 
             do
             {
-                Console.WriteLine("Please enter which simulation you would like to run:\n1. SIRD Compartmental Model\n2. Probability Model");
+                Console.WriteLine("Please enter which simulation you would like to run:\n1. SIRD Compartmental Model\n2. Probability Model\n3. Exit");
                 input = Convert.ToInt32(Console.ReadLine());
                 switch (input)
                 {
@@ -27,6 +28,9 @@ namespace Simulation_Graph
                         break;
                     case 2:
                         Prob_Model();
+                        break;
+                    case 3:
+                        Application.Exit();
                         break;
                     default:
                         Console.WriteLine("Invalid Input.\nPlease enter the number corresponding to your selection.");
@@ -158,14 +162,19 @@ namespace Simulation_Graph
                 Console.WriteLine("\nRecovered Population: " + recPop.getRecPop());
                 Console.WriteLine("\nIterations: " + iterations);
 
-                Simulation_Graph.Form1 simGraph = new Simulation_Graph.Form1();
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
 
-                Console.WriteLine("\nPress Enter to Exit");
+                Form1 simGraph = new Form1();
+                simGraph.addSeries(susPopList, "Susceptible Population", Color.Red);
+                simGraph.addSeries(infPopList, "Infected Population", Color.Blue);
+                simGraph.addSeries(recPopList, "Recovery Population", Color.Green);
+                simGraph.addSeries(deadPopList, "Dead Population", Color.Black);
+                Application.Run(simGraph);
+
+                Console.WriteLine("\nPress Enter to Continue");
                 Console.ReadLine();
             }
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
         }
     }
 }
