@@ -5,10 +5,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Simulation_Graph
 {
     internal static class Program
     {
+        static int runs = 0;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -40,8 +42,13 @@ namespace Simulation_Graph
 
             void Prob_Model()
             {
+                Console.WriteLine("Enter the percentage chance of infectivity (0% - 100%):");
+                float infChance = float.Parse(Console.ReadLine());
 
+                Console.WriteLine("Enter the percentage chance of lethality (0% - 100%):");
+                float mortChance = float.Parse(Console.ReadLine());
             }
+
             void SIRD_Model()
             {
                 int pop;
@@ -171,6 +178,7 @@ namespace Simulation_Graph
                 simGraph.addSeries(recPopList, "Recovery Population", Color.Green);
                 simGraph.addSeries(deadPopList, "Dead Population", Color.Black);
                 Application.Run(simGraph);
+                runs++;
 
                 Console.WriteLine("\nPress Enter to Continue");
                 Console.ReadLine();
