@@ -98,7 +98,7 @@ namespace Simulation_Graph
                         {
                             if (popArray[i,j] == 'I')
                             {
-                                if(rnd.Next(0,100) <= mortChance && timeArray[i,j] > 1)
+                                if(rnd.Next(0,100) <= mortChance)
                                 {
                                     popArray[i, j] = 'D';
                                     deadPop++;
