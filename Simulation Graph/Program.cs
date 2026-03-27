@@ -82,7 +82,7 @@ namespace Simulation_Graph
                         }
                         else
                         {
-                            popArray[i, j] = 'S'
+                            popArray[i, j] = 'S';
                             timeArray[i, j] = 1;
                             susPop++;
                         }
