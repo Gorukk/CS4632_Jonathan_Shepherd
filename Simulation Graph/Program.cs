@@ -42,11 +42,148 @@ namespace Simulation_Graph
 
             void Prob_Model()
             {
+                int susPop = 0;
+                int infPop = 0;
+                int deadPop = 0;
+                int recPop = 0;
+
+                List<int> susList = new List<int>();
+                List<int> infList = new List<int>();
+                List<int> deadList = new List<int>();
+                List<int> recList = new List<int>();
+
+                int iterations = 0;
+
                 Console.WriteLine("Enter the percentage chance of infectivity (0% - 100%):");
                 float infChance = float.Parse(Console.ReadLine());
 
                 Console.WriteLine("Enter the percentage chance of lethality (0% - 100%):");
                 float mortChance = float.Parse(Console.ReadLine());
+
+                int infectionTime = 3;
+
+                char[,] popArray = new char[20, 20];
+                int[,] timeArray = new int[20, 20];
+
+                Random rnd = new Random();
+                int infectionStartI = rnd.Next(0, 20);
+                int infectionStartJ = rnd.Next(0, 20);
+
+                for(int i = 0; i < 20; i++)
+                {
+                    for (int j = 0; j < 20; j++) 
+                    {
+                        if(i == infectionStartI && j == infectionStartJ)
+                        {
+                            popArray[i, j] = 'I';
+                            timeArray[i, j] = 1;
+                            infPop++;
+                        }
+                        else
+                        {
+                            popArray[i, j] = 'S'
+                            timeArray[i, j] = 1;
+                            susPop++;
+                        }
+                    }
+                }
+
+                do
+                {
+                    iterations++;
+                    for (int i = 0; i < 20; i++)
+                    {
+                        for (int j = 0; j < 20; j++)
+                        {
+                            if (popArray[i,j] == 'I')
+                            {
+                                if(rnd.NextDouble(0.0, 100.0) <= mortChance)
+                                {
+                                    popArray[i, j] = 'D';
+                                    deadPop++;
+                                    infPop--;
+                                }
+                                else
+                                {
+                                    timeArray[i,j] = timeArray[i,j] + 1;
+
+                                    if (i-1 >= 0)
+                                    {
+                                        if(rnd.NextDouble <= infChance)
+                                        {
+                                            popArray[i - 1, j] = 'I';
+                                            timeArray[i-1, j] = 1;
+                                            infPop++;
+                                            susPop--;
+                                        }
+                                    }
+
+                                    if(i+1 < 20)
+                                    {
+                                        if (rnd.NextDouble <= infChance)
+                                        {
+                                            popArray[i + 1, j] = 'I';
+                                            timeArray[i + 1, j] = 1;
+                                            infPop++;
+                                            susPop--;
+                                        }
+                                    }
+
+                                    if(j-1 >= 0)
+                                    {
+                                        if (rnd.NextDouble <= infChance)
+                                        {
+                                            popArray[i, j - 1] = 'I';
+                                            timeArray[i, j - 1] = 1;
+                                            infPop++;
+                                            susPop--;
+                                        }
+                                    }
+
+                                    if(j+1 < 20)
+                                    {
+                                        if (rnd.NextDouble <= infChance)
+                                        {
+                                            popArray[i, j + 1] = 'I';
+                                            timeArray[i, j + 1] = 1;
+                                            infPop++;
+                                            susPop--;
+                                        }
+                                    }
+
+                                    if (timeArray[i, j] == 3)
+                                    {
+                                        popArray[i, j] = 'R';
+                                        timeArray[i, j] = 0;
+                                        infPop--;
+                                        recPop++;
+                                    }
+                                }
+                            }else if(popArray[i, j] == 'R')
+                            {
+                                popArray[i, j] = 'S';
+                                recPop--;
+                                SusPop++;
+                            }
+                        }
+                    }
+
+                    susList.Add(susPop);
+                    infList.Add(infPop);
+                    recList.Add(recPop);
+                    deadList.Add(deadPop);
+                } while(infPop > 0 && iterations < 100);
+
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+
+                Form1 simGraph = new Form1();
+                simGraph.addSeries(susList, "Susceptible Population", Color.Red);
+                simGraph.addSeries(infList, "Infected Population", Color.Blue);
+                simGraph.addSeries(recList, "Recovery Population", Color.Green);
+                simGraph.addSeries(deadList, "Dead Population", Color.Black);
+                Application.Run(simGraph);
+                runs++;
             }
 
             void SIRD_Model()
