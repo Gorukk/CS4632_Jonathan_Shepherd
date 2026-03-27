@@ -98,7 +98,7 @@ namespace Simulation_Graph
                         {
                             if (popArray[i,j] == 'I')
                             {
-                                if(rnd.Next(0,100) <= mortChance)
+                                if(rnd.Next(0,100) <= mortChance && timeArray[i,j] > 1)
                                 {
                                     popArray[i, j] = 'D';
                                     deadPop++;
@@ -175,8 +175,15 @@ namespace Simulation_Graph
                     deadList.Add(deadPop);
                 } while(infPop > 0 && iterations < 100);
 
+                Console.WriteLine("\nSusceptible Population: " + susPop);
+                Console.WriteLine("\nInfected Population: " + infPop);
+                Console.WriteLine("\nDead Population: " + deadPop);
+                Console.WriteLine("\nRecovered Population: " + recPop);
+                Console.WriteLine("\nIterations: " + iterations);
+
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
+
 
                 Form1 simGraph = new Form1();
                 simGraph.addSeries(susList, "Susceptible Population", Color.Red);
