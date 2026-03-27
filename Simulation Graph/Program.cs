@@ -98,7 +98,7 @@ namespace Simulation_Graph
                         {
                             if (popArray[i,j] == 'I')
                             {
-                                if(rnd.NextDouble(0.0, 100.0) <= mortChance)
+                                if(rnd.Next(0,100) <= mortChance)
                                 {
                                     popArray[i, j] = 'D';
                                     deadPop++;
@@ -110,7 +110,7 @@ namespace Simulation_Graph
 
                                     if (i-1 >= 0)
                                     {
-                                        if(rnd.NextDouble <= infChance)
+                                        if(rnd.Next(0,100) <= infChance)
                                         {
                                             popArray[i - 1, j] = 'I';
                                             timeArray[i-1, j] = 1;
@@ -121,7 +121,7 @@ namespace Simulation_Graph
 
                                     if(i+1 < 20)
                                     {
-                                        if (rnd.NextDouble <= infChance)
+                                        if (rnd.Next(0,100) <= infChance)
                                         {
                                             popArray[i + 1, j] = 'I';
                                             timeArray[i + 1, j] = 1;
@@ -132,7 +132,7 @@ namespace Simulation_Graph
 
                                     if(j-1 >= 0)
                                     {
-                                        if (rnd.NextDouble <= infChance)
+                                        if (rnd.Next(0,100) <= infChance)
                                         {
                                             popArray[i, j - 1] = 'I';
                                             timeArray[i, j - 1] = 1;
@@ -143,7 +143,7 @@ namespace Simulation_Graph
 
                                     if(j+1 < 20)
                                     {
-                                        if (rnd.NextDouble <= infChance)
+                                        if (rnd.Next(0,100) <= infChance)
                                         {
                                             popArray[i, j + 1] = 'I';
                                             timeArray[i, j + 1] = 1;
@@ -164,7 +164,7 @@ namespace Simulation_Graph
                             {
                                 popArray[i, j] = 'S';
                                 recPop--;
-                                SusPop++;
+                                susPop++;
                             }
                         }
                     }
@@ -186,7 +186,7 @@ namespace Simulation_Graph
                 Application.Run(simGraph);
 
                 Bitmap bmp = new Bitmap(simGraph.Width, simGraph.Height, PixelFormat.Format32bppArgb);
-                simGraph.DrawToBitmap(bmp, Point.Empty, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                simGraph.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
                 runs++;
                 bmp.Save("ProbabilityRun" + runs, ImageFormat.Png);
             }
@@ -322,7 +322,7 @@ namespace Simulation_Graph
                 Application.Run(simGraph);
                 runs++;
                 Bitmap bmp = new Bitmap(simGraph.Width, simGraph.Height, PixelFormat.Format32bppArgb);
-                simGraph.DrawToBitmap(bmp, Point.Empty, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                simGraph.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
                 runs++;
                 bmp.Save("ProbabilityRun" + runs, ImageFormat.Png);
 
